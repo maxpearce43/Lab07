@@ -7,43 +7,40 @@
 
 
 def count_occurrences(target, values):
-    # TODO (Part 1, recursion): return how many times `target` appears in the list
-    #   `values`.
-    #   Base case: an empty list contains it 0 times.
-    #   Recursive case: 1 (if the first item equals `target`, otherwise 0) plus the
-    #   count in the rest of the list, values[1:].
-    pass
+    if not values:
+        return 0
+    return (1 if values[0] == target else 0) + count_occurrences(target, values[1:])
 
 
 def is_sorted(values):
-    # TODO (Part 2, recursion): return True if `values` is in non-decreasing order
-    #   (every item is <= the one after it), otherwise False.
-    #   Base case: a list of 0 or 1 items is already sorted.
-    #   Recursive case: the first two items are in order AND the rest is sorted.
-    pass
+    if len(values) <= 1:
+        return True
+    return values[0] <= values[1] and is_sorted(values[1:])
 
 
 class Rectangle:
     def __init__(self, width, height):
         # TODO (Part 3, OOP): store width and height on self
-        pass
+        self.width = width
+        self.height = height
 
     def area(self):
         # TODO: return width * height
-        pass
+        return self.width * self.height
 
     def perimeter(self):
         # TODO: return 2 * (width + height)
-        pass
+        return 2 * (self.width + self.height)
 
     def __str__(self):
         # TODO: return "<width>x<height>", e.g. Rectangle(3, 4) -> "3x4"
-        pass
+        return f"{self.width}x{self.height}"
 
 
 class Square(Rectangle):   # Part 4 - stretch (optional)
     def __init__(self, side):
         # TODO: a Square is a Rectangle whose width and height are the same. Call the
+        super().__init__(side, side)
         #   Rectangle constructor with `side` for both (use super().__init__(...)).
         #   area, perimeter, and __str__ are then inherited automatically.
         pass
